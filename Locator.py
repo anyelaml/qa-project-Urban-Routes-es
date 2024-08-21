@@ -4,17 +4,17 @@ import data
 import codigo
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
+# Se cambio el nombre a UrbanRoutes Page y se añadio las interacciones con los localizadores
 class UrbanRoutesPage:
 
     from_field = (By.ID, 'from')
     to_field = (By.ID, 'to')
     mode_button = (By.CSS_SELECTOR, ".modes-container")
     ask_taxi = (By.CLASS_NAME, 'button.round')
-    tariff_picker = (By.XPATH, '//*[@id="root"]/div/div[3]/div[3]/div[2]')
-    # Para la tarifa comfort intente usar class name pero no lo detecta.
     comfort_tariff = (By.XPATH, '//*[@id="root"]/div/div[3]/div[3]/div[2]/div[1]/div[5]')
-    # Para extrer el titulo, tampoco funciona el class name, se salta a Laboral
+    # Para la tarifa comfort intente usar class name pero no lo detecta.
     comfort_text = (By.XPATH, '//*[@id="root"]/div/div[3]/div[3]/div[2]/div[1]/div[5]/div[2]')
+    # Para extrer el titulo, tampoco funciona el class name, se salta a Laboral
     phone = (By.CLASS_NAME, "np-button")
     add_phone_number = (By.ID, 'phone')
     get_number =(By.CLASS_NAME, 'np-text')
@@ -64,11 +64,8 @@ class UrbanRoutesPage:
             expected_conditions.visibility_of_element_located(self.comfort_tariff)
         )
         comfort_element.click()
-       # assert 'Comfort' in comfort_element.text
 
     def get_comfort(self):
-        #return self.driver.find_element(*self.comfort_text).get_property('text')
-        #assert 'Comfort' in self.driver.find_element(*self.comfort_text).text
         return self.driver.find_element(*self.comfort_text).text
 
     def set_comfort(self):
@@ -82,7 +79,7 @@ class UrbanRoutesPage:
         self.driver.find_element(*self.add_phone_number).send_keys(data.phone_number)
 
     def get_phone_number_text(self):
-        return self.driver.find_element(*self.get_number).text
+        return self.driver.find_element(*self.get_number).text #Se agrego esta funcion para comprobar el numero y la forma de comprobarlo
 
     def click_next_button(self):
         self.driver.find_element(*self.next_button).click()
