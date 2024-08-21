@@ -14,9 +14,14 @@ haber instalado selenium y el controlador web driver para chrome.
 
 CREACION DE ARCHIVOS
 
-- Para una mejor organizacion en las pruebas, los localizadores necesarios se 
-encuentran en la carpeta Locator dentro de la clase UrbanRoutesLocator, se hizo uso de diferentes
+- Para una mejor organizacion en las pruebas, los localizadores necesarios y las
+funciones que interactuan con estos se encuentran en la carpeta Locator dentro de
+la clase UrbanRoutesPage, se hizo uso de diferentes
 tipos de localizadores, entre ellos, ID, CSS SELECTOR, CLASSNAME Y XPATH
+en el archivo Locator se importan la clase By del paquete selenium
+el archivo data
+archivo codigo
+la clase web driver wait para las esperas que se utilizaran y la clase expected conditions.
 - se necesita crear el archivo data.py donde se encuentran el enlace al servidor 
 de urban routes, las direcciones para ingresar en los campos Desde y Hasta, el numero
 de telefono, el numero de la tarjeta de credito y el codigo de la misma y el mensaje para
@@ -24,17 +29,13 @@ el conductor.
 - crear el archivo main.py en donde se van a importa:
 el archivo data
 elwebdriver
-el modulo time para agregar tiempos de espera.
-tambien se importa de selenium.webdriver.support.ui la clase web driver wait, la
-cual nos va a ayudar cuando ingresemos esperas necesarias en las prueba
-la clase expected conditions de selenium webdriver.support
-el archivo codigo, el cual contiene una funcion de utilidad para las pruebas
-importamos el archivo Locator donde estan los localizadores en la clase Urban Routes Locator
+importamos el archivo Locator donde estan los localizadores en la clase Urban Routes Page
 
-- en el archivo main, en la clase Urban Routes Page se van a realizar todas
+- en el archivo Locator, en la clase Urban Routes Page se van a realizar todas
  las interacciones con los localizadores, como buscar el elemento, dar click, llenar campos,
- las esperas implicitas y otras funciones combinadas. en este archivo tambien tendremos 
-la clase TestUrbanRoutes donde se especifican todas las pruebas del proceso de reserva de un taxi.
+ las esperas implicitas y otras funciones combinadas.
+- en el archivo main archivo tenemos la clase TestUrbanRoutes donde se especifican todas
+las pruebas del proceso de reserva de un taxi.
 
 CREACION DE FUNCIONES
 
@@ -54,7 +55,7 @@ llamamos a retrieve phone code del archivo codigo para que pueda generarnos el c
 y poder confirmar el nuevo numero de telefono.
 añadir una tarjeta de credito con la funcion new credit card haciendo uso de los datos que se encuentran
 en data
-por ultimo, se tiene la clase test Urban Routes la cual contiene todas las pruebas a realizar
+por ultimo, en main se tiene la clase test Urban Routes la cual contiene todas las pruebas a realizar
 en el proceso de pedir un taxi.
 se define para comenzar la funcion de driver para chrome
 
@@ -75,7 +76,11 @@ encuentra en data
 - def test blanket, activa el boton de manta y pañuelos para luego comprobar que se haya
 desplazado el botón.
 - def test add ice cream, hace click dos veces en el contador de añadir helado
-- def test click reserve taxi, encuentra el boton para reservar taxi y lo presiona.
+- def test click reserve taxi, encuentra el boton para reservar taxi y lo presiona para comprobarlo espera a que aparezca
+la ventana de detalles de reserva.
+- def test driver info, esta funcion espera a que aparezca la ventana de detalles de reserva, donde aparece el temporizador.
 finalmente tenemos la funcion def teardown class, la que cierra la pantalla y finaliza las pruebas.
 
-Posterior a escribir las pruebas, las podemos correr a traves de current file colocandonos en el archivo main.py.
+Posterior a escribir las pruebas, las podemos correr a traves de current file colocandonos en el archivo main.py,
+tambien podemos ubicarnos en main.py y presionar el boton verde que se encuentra junto a class TestUrbanRoutes
+y seleccionar Run.
