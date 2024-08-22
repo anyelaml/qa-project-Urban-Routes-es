@@ -29,7 +29,9 @@ class TestUrbanRoutes:
     def test_tariff_picker(self):
         routes_page = UrbanRoutesPage(self.driver)
         routes_page.set_comfort()
-        assert routes_page.get_comfort() == 'Comfort' #Se añadio el assert en las pruebas
+        assert routes_page.get_comfort() == 'Manta y pañuelos'
+        #Se cambio el modo de verificacion con el requisito de manta y pañuelos exclusivo de Comfort y se cambio el localizador a classname
+
 
     def test_select_phone(self):
         routes_page = UrbanRoutesPage(self.driver)

@@ -11,13 +11,13 @@ class UrbanRoutesPage:
     to_field = (By.ID, 'to')
     mode_button = (By.CSS_SELECTOR, ".modes-container")
     ask_taxi = (By.CLASS_NAME, 'button.round')
-    comfort_tariff = (By.XPATH, '//*[@id="root"]/div/div[3]/div[3]/div[2]/div[1]/div[5]')
-    # Para la tarifa comfort intente usar class name pero no lo detecta.
-    comfort_text = (By.XPATH, '//*[@id="root"]/div/div[3]/div[3]/div[2]/div[1]/div[5]/div[2]')
-    # Para extrer el titulo, tampoco funciona el class name, se salta a Laboral
+    comfort_tariff = (By.CSS_SELECTOR, "div.tcard:nth-child(5)>div:nth-child(3)")
+    # Se cambio el selector a css selector para elegir la tarifa Comfort
+    selected_tariff = (By.CLASS_NAME, 'r-sw-label')
+    #Se cambio el selector para verificar la tarifa Comfort haciendo uso de requisito manta y pañuelos
     phone = (By.CLASS_NAME, "np-button")
     add_phone_number = (By.ID, 'phone')
-    get_number =(By.CLASS_NAME, 'np-text')
+    get_number = (By.CLASS_NAME, 'np-text')
     next_button = (By.CLASS_NAME, "button.full")
     add_code = (By.ID, 'code')
     confirmation_code = (By.CSS_SELECTOR, '.section.active>form>.buttons>:nth-child(1)')
@@ -60,13 +60,12 @@ class UrbanRoutesPage:
         self.set_to(address_to)
 
     def click_comfort(self):
-        comfort_element = WebDriverWait(self.driver, 4).until(
-            expected_conditions.visibility_of_element_located(self.comfort_tariff)
-        )
+        comfort_element = self.driver.find_element(*self.comfort_tariff)
         comfort_element.click()
 
     def get_comfort(self):
-        return self.driver.find_element(*self.comfort_text).text
+        return self.driver.find_element(*self.selected_tariff).text
+
 
     def set_comfort(self):
         self.click_ask_taxi()
