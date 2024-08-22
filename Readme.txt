@@ -60,8 +60,8 @@ PRUEBAS A REALIZAR
 
 - def test set route, abre la pagina de urban, e ingresa la direccion desde y hasta y confirma los valores 
 ingresados.
-- def test tariff picker, hace click en el boton de reserva de taxi y espera a que aparezca el recuadro 
-de tarifas y selecciona la tarifa comfort para tambien confirmar que se eligio la tarifa correcta.
+- def test tariff picker, hace click en el boton de reserva de taxi y selecciona la tarifa comfort para
+tambien confirmar que se eligio la tarifa correcta.
 - def test select phone, selecciona el campo añadir telefono, e ingresa el numero que proviene del 
 archivo data, hace click en siguiente para poder ingresar el codigo  de confirmacion y presiona en confirmar.
 - def test new credit card, presiona en el campo añadir tarjeta, hace click en ingresar tarjeta, e 
